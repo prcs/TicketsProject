@@ -16,5 +16,8 @@
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1"
   },
-  "description": "RockInRio"
+  "description": "RockInRio",
+  "scripts": {
+    "start": "server/server.js"
+  }
 }
