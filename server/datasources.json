@@ -1,12 +1,12 @@
 {
   "mongodb": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "",
-    "database": "rockinriodb",
-    "password": "",
+    "host": "ds021694.mlab.com",
+    "port": 21694,
+    "url": "mongodb://heroku_4t17h68k:3tdvgcqphasekh7652bh2gu6e3@ds021694.mlab.com:21694/heroku_4t17h68k",
+    "database": "heroku_4t17h68k",
+    "password": "psilva-993325099",
     "name": "mongodb",
-    "user": "",
+    "user": "peterson_",
     "connector": "mongodb"
   }
 }
