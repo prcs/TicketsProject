@@ -6,7 +6,7 @@
     "database": "heroku_4t17h68k",
     "password": "psilva-993325099",
     "name": "mongodb",
-    "user": "peterson_",
+    "user": "ENV['MONGODB_USER']" ,
     "connector": "mongodb"
   }
 }
