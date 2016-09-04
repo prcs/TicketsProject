@@ -1,0 +1,45 @@
+<div >
+    <ul >
+        <li></span></li>
+    </ul>
+</div>
+
+<div class="container" ng-controller="UsuarioController">
+    <h2>Basic Table</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><button ng-click="sortBy('first_name')">Firtname</button></th>
+            <th>Lastname</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in usuarios | orderBy:propertyName:reverse"
+            ng-class="verificaClasseCss(user.gender)">
+            <td><span ng-bind="user.first_name"/></td>
+            <td><span ng-bind="user.last_name"/></td>
+            <td><span ng-bind="user.email"/></td>
+            <td><input type="checkbox" ng-checked="user.active == 1"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form name="myForm" ng-submit="submit()">
+        <input type="text" class="firstname" name="firstname" ng-model="user.first_name" required ng-minlength="4"><br/>
+        <input type="radio" name="gender" ng-model="user.gender" value="Male">Male<br/>
+        <input type="radio" name="gender" ng-model="user.gender" value="Female">Female<br/>
+        <input type="checkbox" ng-model="user.active" ng-true-value="1" ng-false-value="0"><br/>
+        <select ng-model="user.pais" ng-options="o.id as o.nome for o in paises"/><br/>
+        <input type="submit" value="Enviar" ng-disabled="myForm.$invalid">
+    </form>
+
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: activetab == '/'}"><a href="#/home">Home</a></li>
+        <li ng-class="{active: activetab == '/sobre'}"><a href="#/sobre">Sobre</a></li>
+        <li ng-class="{active: activetab == '/contato'}"><a href="#/contato">Contato</a></li>
+    </ul>
+
+    <div ng-view></div>
+</div>
