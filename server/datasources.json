@@ -1,9 +1,12 @@
 {
   "mongodb": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "mongodb://localhost:27017/heroku_4t17h68k" ,
+    "host": "ds021694.mlab.com",
+    "port": 21694,
+    "url": "${MONGODB_URI}" ,
     "database": "heroku_4t17h68k",
+    "password": "${MONGODB_PASS}",
+    "name": "mongodb",
+    "user": "${MONGODB_USER}" ,
     "connector": "mongodb"
   }
 }
