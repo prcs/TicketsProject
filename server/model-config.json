@@ -16,5 +16,17 @@
   "Usuario": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Ingresso": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Foto": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Endereco": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

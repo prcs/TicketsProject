@@ -1,0 +1,22 @@
+{
+  "name": "Foto",
+  "plural": "Fotos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "bites": {
+      "type": "any"
+    },
+    "ingressoId": {
+      "type": "objectId",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

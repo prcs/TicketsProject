@@ -1,52 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="PetModule">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="../app.js"></script>
-    <script src="../modules/usuario/js/UsuarioController.js"></script>
-    <script src="../modules/usuario/js/UsuarioService.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/webapi/lb-services.js"></script>
 
-    <style>
-        .one {
-            border-style: solid;
-            border-color: red;
-        }
-
-        .two {
-            border-style: solid;
-            border-color: green;
-        }
-
-        .firstname.ng-valid {
-            background-color: darkblue;
-        }
-
-        .firstname.ng-dirty.ng-invalid-required {
-            background-color: yellow;
-        }
-
-        .firstname.ng-dirty.ng-invalid-minlength {
-            background-color: deeppink;
-        }
-    </style>
-
-</head>
-<body >
-{{1+1}}
-<div >
-    <ul >
-        <li></span></li>
-    </ul>
-</div>
 
 <div class="container" ng-controller="UsuarioController">
     <h2>Basic Table</h2>
@@ -78,6 +30,3 @@
         <select ng-model="user.pais" ng-options="o.id as o.nome for o in paises"/><br/>
         <input type="submit" value="Enviar" ng-disabled="myForm.$invalid">
     </form>
-</div>
-</body>
-</html>

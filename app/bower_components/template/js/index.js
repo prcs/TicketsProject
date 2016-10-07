@@ -1,3 +1,4 @@
+/*
 $(function() {
   var ctx, data, myLineChart, options;
   Chart.defaults.global.responsive = true;
@@ -132,3 +133,4 @@ $(function() {
   };
   myLineChart = new Chart(ctx).Line(data, options);
 });
+*/

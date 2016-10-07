@@ -1,0 +1,53 @@
+{
+  "name": "Ingresso",
+  "plural": "Ingressos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "descricao": {
+      "type": "string",
+      "required": true
+    },
+    "dataInclusao": {
+      "type": "date"
+    },
+    "dataIngresso": {
+      "type": "date"
+    },
+    "nomeUsuario": {
+      "type": "string",
+      "required": true
+    },
+    "ativo": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "endereco": {
+      "type": "embedsOne",
+      "model": "Endereco",
+      "property": "endereco",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "usuario": {
+      "type": "embedsOne",
+      "model": "Usuario",
+      "property": "usuario",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
