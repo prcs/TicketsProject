@@ -1,6 +1,6 @@
 module.exports = {
     // App Settings
-    MONGO_URI: process.env.MONGO_URI || 'localhost',
+    MONGO_URI: process.env.MONGO_URI || 'localhost:27017/heroku_4t17h68k',
     TOKEN_SECRET: process.env.TOKEN_SECRET || 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NzM2MTQ3MjUsImV4cCI6MTUwNTE1MDcyNSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.UDXs6xEklUUDVZ93Rjv30z9NOkeE-95iy6YSYuStWc0',
 
     // OAuth 2.0

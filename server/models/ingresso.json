@@ -17,10 +17,6 @@
     "dataIngresso": {
       "type": "date"
     },
-    "nomeUsuario": {
-      "type": "string",
-      "required": true
-    },
     "ativo": {
       "type": "boolean",
       "required": true,

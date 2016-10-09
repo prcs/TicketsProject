@@ -7,15 +7,26 @@
   },
   "properties": {
     "cep": {
-      "type": "number",
-      "required": true
-    },
-    "cidade": {
       "type": "string",
       "required": true
     },
-    "estado": {
+    "logradouro": {
+      "type": "string",
+      "required": true
+    },
+    "uf": {
+      "type": "string",
+      "required": true
+    },
+    "complemento": {
       "type": "string"
+    },
+    "localidade": {
+      "type": "string"
+    },
+    "bairro": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

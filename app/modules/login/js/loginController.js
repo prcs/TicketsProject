@@ -31,5 +31,10 @@ app.controller('LoginCtrl', function($scope, $auth) {
     $scope.teste = function() {
         console.log($auth.isAuthenticated());
     };
-
+    $scope.sair1 = function() {
+        $auth.logout();
+    };
+    $scope.sair2 = function() {
+        $auth.removeToken();
+    };
     });

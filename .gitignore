@@ -1,3 +1,4 @@
 AngularEstudo.iml
 .idea
 server/datasources.json
+node_modules

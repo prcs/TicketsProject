@@ -54,8 +54,8 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 
-var User = mongoose.model('User', userSchema);
-
+var User = mongoose.model('User', userSchema, 'Usuario');
+console.log(config.MONGO_URI);
 mongoose.connect(config.MONGO_URI);
 mongoose.connection.on('error', function(err) {
   console.log('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
