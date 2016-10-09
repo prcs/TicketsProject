@@ -1,7 +1,7 @@
 /**
  * Created by Desenvolvimento on 10/09/2016.
  */
-app.controller('LoginController', function($scope, $auth) {
+app.controller('LoginController',['$scope', '$auth', function($scope, $auth) {
 
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider).then(function(response) {
@@ -37,4 +37,4 @@ app.controller('LoginController', function($scope, $auth) {
     $scope.sair2 = function() {
         $auth.removeToken();
     };
-    });
+    }]);
