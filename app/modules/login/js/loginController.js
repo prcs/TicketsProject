@@ -1,7 +1,7 @@
 /**
  * Created by Desenvolvimento on 10/09/2016.
  */
-app.controller('LoginCtrl', function($scope, $auth) {
+app.controller('LoginController', function($scope, $auth) {
 
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider).then(function(response) {

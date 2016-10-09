@@ -10,7 +10,8 @@ var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'sat
         });
 
         $routeProvider.when('/logado', {
-            templateUrl: 'modules/login/view/logado.html'
+            templateUrl: 'modules/login/view/logado.html',
+            controller: 'LoginController'
         });
 
         $routeProvider.when('/fotos/new', {
@@ -24,7 +25,8 @@ var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'sat
         });
 
         $routeProvider.when('/login', {
-            templateUrl: 'modules/login/view/login.html'
+            templateUrl: 'modules/login/view/login.html',
+            controller: 'LoginController'
         });
 
         $routeProvider.when('/adicionarIngresso', {
