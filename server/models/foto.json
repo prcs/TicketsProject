@@ -8,10 +8,10 @@
   },
   "properties": {
     "bites": {
-      "type": "any"
+      "type": "string"
     },
-    "ingressoId": {
-      "type": "objectId",
+    "nome": {
+      "type": "string",
       "required": true
     }
   },

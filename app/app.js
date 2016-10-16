@@ -2,7 +2,7 @@
  * Created by Desenvolvimento on 06/08/2016.
  */
 angular.module('Services', []);
-var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'satellizer', 'ngResource'])
+var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'satellizer', 'ngResource', 'naif.base64'])
     .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
 
         $routeProvider.when('/fotos', {
@@ -32,6 +32,12 @@ var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'sat
         $routeProvider.when('/adicionarIngresso', {
             templateUrl: 'modules/ingresso/view/adicionarIngresso.html',
             controller: 'IngressoController'
+        });
+
+        $routeProvider.when('/procurarIngresso', {
+            templateUrl: 'modules/ingresso/view/procurarIngresso.html',
+            controller: 'IngressoController',
+            buscar: true
         });
 
         $routeProvider.otherwise({redirectTo: '/fotos'});

@@ -2,45 +2,49 @@
  * Created by Desenvolvimento on 06/08/2016.
  */
 app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'Ingresso', '$resource', '$auth', 'Usuario',
-    function ($scope, IngressoService, $http, Ingresso, $resource, $auth, Usuario) {
+    '$route',
+    function ($scope, IngressoService, $http, Ingresso, $resource, $auth, Usuario, $route) {
 
         $scope.ingresso = {};
-
+        //Obtem o usuario logado
         Usuario.findOne({ id: $auth.getPayload().sub }).$promise.then(function(user) {
             $scope.ingresso._usuario = {"nome" : user.displayName, "id" : user.id};
             console.log($scope.ingresso);
         });
+
+        //Adiciona o ingresso
         $scope.adicionar = function () {
 
+            //Verifica se os dados do CEP estao preenchidos
             if($scope.endereco == 'undfined' || $scope.endereco == null){
                 console.log('erro');
             }else{
                 $scope.ingresso._endereco = $scope.endereco;
             }
 
-            Ingresso.create($scope.ingresso).$promise.catch(function (data) {
+            //Insere a foto
+            var foto = {};
+            foto.bites = $scope.foto.base64;
+            foto.nome = $scope.foto.filename;
+            $scope.ingresso._foto = foto;
+            console.log($scope.ingresso);
+
+            //Insere o ingresso
+            Ingresso.create($scope.ingresso).$promise
+                .then(function (data) {
+                    $scope.sucesso = true;
+                }).catch(function (data) {
                 console.log(data);
             });
         };
 
-        $scope.buscarCep = function (cep) {
+        //Obtem os dados referentes ao CEP
+        $scope.buscarCep = function(cep){
+            $scope.endereco = IngressoService.obterDadosEndereco(cep);
+        };;;
 
-            console.log($auth.getPayload());
-            $scope.endereco = {};
-           var result = $resource('https://viacep.com.br/ws/'+cep+'/json/?callback=JSON_CALLBACK', { format: 'json', jsoncallback: 'JSON_CALLBACK' }, { 'load': { 'method': 'JSONP' } });
-            result.load()
-                .$promise.then(function(endereco_) {
-
-                    $scope.endereco.bairro = endereco_.bairro;
-                    $scope.endereco.complemento = endereco_.complemento;
-                    $scope.endereco.uf = endereco_.uf;
-                    $scope.endereco.cep = endereco_.cep;
-                    $scope.endereco.localidade = endereco_.localidade;
-                    $scope.endereco.logradouro = endereco_.logradouro;
-                    console.log(endereco_);
-                });
-
+        if($route.current.$$route.buscar){
+            $scope.ingressosResult = Ingresso.find();
         }
 
-
-}]);
+    }]);

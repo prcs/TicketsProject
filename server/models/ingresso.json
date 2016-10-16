@@ -42,6 +42,15 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "foto": {
+      "type": "embedsOne",
+      "model": "Foto",
+      "property": "foto",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [],
