@@ -15,6 +15,8 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
         //Adiciona o ingresso
         $scope.adicionar = function () {
 
+            $scope.ingresso.dataInclusao = new Date();
+            $scope.ingresso.dataIngresso = $scope.dataIngresso;
             //Verifica se os dados do CEP estao preenchidos
             if($scope.endereco == 'undfined' || $scope.endereco == null){
                 console.log('erro');
@@ -22,12 +24,14 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
                 $scope.ingresso._endereco = $scope.endereco;
             }
 
-            //Insere a foto
-            var foto = {};
-            foto.bites = $scope.foto.base64;
-            foto.nome = $scope.foto.filename;
-            $scope.ingresso._foto = foto;
-            console.log($scope.ingresso);
+            if($scope.foto){
+                //Insere a foto
+                var foto = {};
+                foto.bites = $scope.foto.base64;
+                foto.nome = $scope.foto.filename;
+                $scope.ingresso._foto = foto;
+                console.log($scope.ingresso);
+            }
 
             //Insere o ingresso
             Ingresso.create($scope.ingresso).$promise
@@ -48,9 +52,6 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
                 "where": {"ativo": true},
                 "include": ["foto", "usuario", "endereco"]
             }});
-
-
-            console.log($scope.ingressosResult);
         }
 
     }]);

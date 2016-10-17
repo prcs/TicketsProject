@@ -52,3 +52,18 @@ var app = angular.module('PetModule', ['Services', 'lbServices', 'ngRoute', 'sat
             scope: ['email']
         });
 }]);
+
+app.directive('errSrc', function() {
+    return {
+        link: function(scope, element, attrs) {
+            console.log(attrs);
+            // element.bind('error', function() {
+            //     if (attrs.ngSrc == undefined) {
+            //         console.log('ubdefined');
+            //         attrs.$set('ngSrc', attrs.errSrc);
+            //     }
+            // });
+            attrs.$set('src', 'https://afterdark.co/assets/images/frontpage/icon_buy_tickets.png');
+        }
+    }
+});

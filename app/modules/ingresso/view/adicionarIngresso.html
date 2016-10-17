@@ -18,8 +18,12 @@
                             <input type="text" class="form-control" name="cep" ng-model="cep" id="cep" placeholder="CEP" size="10" maxlength="9" required ng-blur="buscarCep(cep)">
                         </div>
                         <div class="form-group">
+                            <label for="data">Data do evento</label>
+                            <input type="date" class="form-control" name="data" ng-model="dataIngresso" id="data" >
+                        </div>
+                        <div class="form-group">
                             <label for="foto">Foto do ingresso</label>
-                            <input type="file" id="foto" name="foto" base-sixty-four-input required ng-model="foto" accept="image/*" maxsize="5000">
+                            <input type="file" id="foto" name="foto" base-sixty-four-input ng-model="foto" accept="image/*" maxsize="5000">
                             <span ng-show="frmCadIngresso.foto.$error.maxsize">O tamanho da imagem excede 5MB.</span>
                         </div>
                         <button type="button" class="btn btn-default" ng-click="adicionar()" ng-disabled="frmCadIngresso.$invalid || sucesso">Salvar</button>

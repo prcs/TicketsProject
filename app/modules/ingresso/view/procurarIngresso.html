@@ -1,84 +1,60 @@
 <style>
-    body {
-        padding-top: 50px;
-    }
-    .dropdown.dropdown-lg .dropdown-menu {
-        margin-top: -1px;
-        padding: 6px 20px;
-    }
-    .input-group-btn .btn-group {
-        display: flex !important;
-    }
-    .btn-group .btn {
-        border-radius: 0;
-        margin-left: -1px;
-    }
-    .form-group{
-        margin-bottom: 45px;
+    .container{
+        margin-top:30px;
     }
 
-    .form-horizontal .form-group {
-        margin-left: 0;
-        margin-right: 0;
-
+    .filter-col{
+        padding-left:10px;
+        padding-right:10px;
     }
-    .form-group .form-control:last-child {
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-    }
-
-    @media screen and (min-width: 768px) {
-        #adv-search {
-            width: 500px;
-            margin: 0 auto;
-        }
-        .dropdown.dropdown-lg {
-            position: static !important;
-        }
-        .dropdown.dropdown-lg .dropdown-menu {
-            min-width: 500px;
-        }
-    }
-    .btn {
-        margin-top: 0px !important;
-        border-width: 1px !important;
-        border-color: black !important; }
 </style>
 <form id="frmCadIngresso" name="frmCadIngresso">
     <div class="row">
-        <div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <label for="filter">Filter by</label>
-                                        <select class="form-control">
-                                            <option value="0" selected>All Snippets</option>
-                                            <option value="1">Featured</option>
-                                            <option value="2">Most popular</option>
-                                            <option value="3">Top rated</option>
-                                            <option value="4">Most commented</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Contains the words</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div><button type="button" class="btn btn-success">Filtrar</button></div>
-                                </form>
-                            </div>
+        <div id="filter-panel" class="collapse filter-panel">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label class="filter-col" style="margin-right:0;" for="pref-perpage">Rows per page:</label>
+                            <select id="pref-perpage" class="form-control">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option selected="selected" value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                                <option value="400">400</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                            </select>
+                        </div> <!-- form group [rows] -->
+                        <div class="form-group">
+                            <label class="filter-col" style="margin-right:0;" for="pref-search">Search:</label>
+                            <input type="text" class="form-control input-sm" id="pref-search">
+                        </div><!-- form group [search] -->
+                        <div class="form-group">
+                            <label class="filter-col" style="margin-right:0;" for="pref-orderby">Order by:</label>
+                            <select id="pref-orderby" class="form-control">
+                                <option>Descendent</option>
+                            </select>
+                        </div> <!-- form group [order by] -->
+                        <div class="form-group pull-right">
+                            <button type="submit" class="btn btn-default filter-col" data-toggle="collapse" data-target="#filter-panel">
+                                <span class="glyphicon glyphicon-record"></span> Pesquisar
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -89,9 +65,15 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        <div class="title">Pricing Table Example</div>
+                        <div class="title">Pesquisar ingressos</div>
                     </div>
-
+                    <div class="pull-right card-action">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+                                <span class="glyphicon glyphicon-cog"></span> Filtrar resultados
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row no-margin no-gap">
@@ -99,20 +81,19 @@
                             <div class="pricing-table green">
                                 <div class="pt-header">
                                     <div class="plan-pricing">
-                                        <img data-ng-src="data:image/png;base64,{{ingresso.foto.bites}}">
-                                        <div class="pricing">Data do evento: Em aberto</div>
-                                        <div class="pricing-type">Cadastrado por: {{ingresso.usuario.nome}} em </div>
+                                        <img  ng-src="data:image/png;base64,{{ingresso.foto.bites}}" err-src="http://lauterry.github.io/slides-prez-angular/img/angularjs.png" height="300" width="300">
+                                        <div class="pricing">Data do evento: <span ng-bind="ingresso.dataIngresso | date:'dd/MM/yyyy'"></span> <span ng-show="!ingresso.dataIngresso">Em aberto</span></div>
+                                        <div class="pricing-type">Cadastrado por: {{ingresso.usuario.nome}} em {{ingresso.dataInclusao | date:'dd/MM/yyyy'}}</div>
                                     </div>
                                 </div>
                                 <div class="pt-body">
-                                    <h5>{{ingresso.descricao}}</h5>
+                                    <h5 style="height: 45px">{{ingresso.descricao}}</h5>
                                     <ul class="plan-detail">
                                         <li>{{ingresso.endereco.bairro }}, {{ingresso.endereco.localidade}} - {{ingresso.endereco.uf}}</li>
                                         <li style="font-size:2em;">
                                             <i class="fa fa-facebook-square" aria-hidden="true" ></i>
                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                         </li>
-                                        <li>Unlimited Bandwidth</li>
                                     </ul>
                                 </div>
                                 <div class="pt-footer">
