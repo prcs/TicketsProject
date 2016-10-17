@@ -31,7 +31,8 @@
       "property": "endereco",
       "options": {
         "validate": true,
-        "forceId": false
+        "forceId": false,
+        "persistent" : true
       }
     },
     "usuario": {
@@ -49,7 +50,8 @@
       "property": "foto",
       "options": {
         "validate": true,
-        "forceId": false
+        "forceId": false,
+        "persistent" : true
       }
     }
   },

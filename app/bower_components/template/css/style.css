@@ -21,7 +21,7 @@ body {
   margin-right: 0; }
   .row.no-gap > [class*="col-"] {
     padding-left: 0;
-    padding-right: 0px; }
+    padding-right: 15px; }
 
 .no-padding {
   padding: 0px !important; }
@@ -916,7 +916,8 @@ body.login-page {
   text-align: center;
   padding: 1em; }
   .pricing-table .pt-header .plan-pricing .pricing {
-    font-size: 2.5em; }
+    font-size: 1.2em;
+    opacity: 2;}
   .pricing-table .pt-header .plan-pricing .pricing-type {
     opacity: 0.9; }
 
@@ -1232,3 +1233,6 @@ body.login-page {
   .featurette-heading {
     margin-top: 100px;
     margin-bottom: 20px; } }
+
+
+

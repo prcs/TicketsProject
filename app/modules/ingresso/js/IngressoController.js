@@ -41,10 +41,16 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
         //Obtem os dados referentes ao CEP
         $scope.buscarCep = function(cep){
             $scope.endereco = IngressoService.obterDadosEndereco(cep);
-        };;;
+        };
 
         if($route.current.$$route.buscar){
-            $scope.ingressosResult = Ingresso.find();
+            $scope.ingressosResult = Ingresso.find({"filter": {
+                "where": {"ativo": true},
+                "include": ["foto", "usuario", "endereco"]
+            }});
+
+
+            console.log($scope.ingressosResult);
         }
 
     }]);
