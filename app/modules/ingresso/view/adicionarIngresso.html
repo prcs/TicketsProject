@@ -11,22 +11,28 @@
                     <form>
                         <div class="form-group">
                             <label for="descricao">Descrição</label>
-                            <textarea class="form-control" ng-model="ingresso.descricao" id="descricao" rows="3" maxlength="140" placeholder="Breve descrição" required></textarea>
+                            <input type="text" class="form-control" ng-model="ingresso.descricao" id="descricao" maxlength="140" placeholder="Breve descrição" required>
                         </div>
                         <div class="form-group">
-                            <label for="cep">CEP</label>
-                            <input type="text" class="form-control" name="cep" ng-model="cep" id="cep" placeholder="CEP" size="10" maxlength="9" required ng-blur="buscarCep(cep)">
+                            <label for="cep">CEP (sem hífen)</label>
+                            <input type="text" class="form-control" name="cep" ng-model="cep" id="cep" placeholder="CEP" ui-br-cep-mask size="10" ng-keyup="buscarCep(cep)" maxlength="9" minlength="9" required >
+                        </div>
+                        <div ng-show="endereco.localidade || frmCadIngresso.cep.$valid">
+                            <blockquote>
+                                <p ng-show="endereco.localidade">{{endereco.localidade}} - {{endereco.uf}}</p>
+                                <p ng-show="frmCadIngresso.cep.$valid && !endereco.localidade">Cep não encontrado.</p>
+                            </blockquote>
                         </div>
                         <div class="form-group">
                             <label for="data">Data do evento</label>
-                            <input type="date" class="form-control" name="data" ng-model="dataIngresso" id="data" >
-                        </div>
+                            <input type="text" class="form-control" name="data" ng-model="dataIngresso" id="data" ui-mask="9999/99/99">
+                            </div>
                         <div class="form-group">
                             <label for="foto">Foto do ingresso</label>
                             <input type="file" id="foto" name="foto" base-sixty-four-input ng-model="foto" accept="image/*" maxsize="5000">
                             <span ng-show="frmCadIngresso.foto.$error.maxsize">O tamanho da imagem excede 5MB.</span>
                         </div>
-                        <button type="button" class="btn btn-default" ng-click="adicionar()" ng-disabled="frmCadIngresso.$invalid || sucesso">Salvar</button>
+                        <button type="button" class="btn btn-success" ng-click="adicionar()" ng-disabled="frmCadIngresso.$invalid || sucesso || !endereco.localidade">Salvar</button>
                     </form>
                 </div>
             </div>

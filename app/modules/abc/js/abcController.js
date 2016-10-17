@@ -1,40 +1,25 @@
 /**
  * Created by Desenvolvimento on 10/09/2016.
  */
-app.controller('abcController',['$scope', '$auth', function($scope, $auth) {
+app.controller('abcController',['$scope', '$auth', '$sessionStorage', 'Usuario',
+    function($scope, $auth, $sessionStorage, Usuario) {
 
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider).then(function(response) {
-                console.log(response);
+                //Obtem o usuario logado
+                Usuario.findOne({ id: $auth.getPayload().sub }).$promise.then(function(user) {
+                    $sessionStorage.usuario = user;
+                });
             });
         };
 
-    // Controller
-    $scope.link = function(provider) {
-        $auth.link(provider)
-            .then(function(response) {
-                console.log(response);
-            })
-            .catch(function(response) {
-                // Handle errors here.
-            });
-    };
-    $scope.unlink = function(provider) {
-        $auth.unlink('facebook')
-            .then(function(response) {
-                // You have unlinked a GitHub account.
-            })
-            .catch(function(response) {
-                // Handle errors here.
-            });
-    };
+
     $scope.teste = function() {
         console.log($auth.isAuthenticated());
     };
     $scope.sair1 = function() {
         $auth.logout();
+        $sessionStorage.usuario = null;
     };
-    $scope.sair2 = function() {
-        $auth.removeToken();
-    };
+
     }]);

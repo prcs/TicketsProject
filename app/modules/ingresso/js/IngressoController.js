@@ -2,16 +2,13 @@
  * Created by Desenvolvimento on 06/08/2016.
  */
 app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'Ingresso', '$resource', '$auth', 'Usuario',
-    '$route',
-    function ($scope, IngressoService, $http, Ingresso, $resource, $auth, Usuario, $route) {
+    '$route', 'AppService', '$sessionStorage',
+    function ($scope, IngressoService, $http, Ingresso, $resource, $auth, Usuario, $route, AppService, $sessionStorage) {
 
         $scope.ingresso = {};
-        //Obtem o usuario logado
-        Usuario.findOne({ id: $auth.getPayload().sub }).$promise.then(function(user) {
-            $scope.ingresso._usuario = {"nome" : user.displayName, "id" : user.id};
-            console.log($scope.ingresso);
-        });
 
+        $scope.ingresso._usuario = {"nome" : $sessionStorage.usuario.displayName, "id" : $sessionStorage.usuario.id};
+        
         //Adiciona o ingresso
         $scope.adicionar = function () {
 
@@ -36,6 +33,7 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
             //Insere o ingresso
             Ingresso.create($scope.ingresso).$promise
                 .then(function (data) {
+                    AppService.MensagemSistema();
                     $scope.sucesso = true;
                 }).catch(function (data) {
                 console.log(data);
@@ -53,5 +51,4 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
                 "include": ["foto", "usuario", "endereco"]
             }});
         }
-
     }]);

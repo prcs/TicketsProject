@@ -239,8 +239,9 @@ app.post('/auth/facebook', function(req, res) {
               return res.status(400).send({ message: 'User not found' });
             }
             user.facebook = profile.id;
-            user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
+            user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=normal';
             user.displayName = user.displayName || profile.name;
+            user.email = user.email || profile.email;
             user.save(function() {
               var token = createJWT(user);
               res.send({ token: token });
@@ -256,8 +257,9 @@ app.post('/auth/facebook', function(req, res) {
           }
           var user = new User();
           user.facebook = profile.id;
-          user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
+          user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=normal';
           user.displayName = profile.name;
+          user.email = user.email || profile.email;
           user.save(function() {
             var token = createJWT(user);
             res.send({ token: token });

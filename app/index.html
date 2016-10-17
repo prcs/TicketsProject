@@ -45,6 +45,10 @@
         <script src="bower_components/webapi/lb-services.js"></script>
         <script type="text/javascript" src="bower_components/satellizer/dist/satellizer.js"></script>
         <script type="text/javascript" src="bower_components/angular-base64-upload/dist/angular-base64-upload.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="bower_components/remarkable-bootstrap-notify/bootstrap-notify.js"></script>
+        <script type="text/javascript" src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
+        <script type="text/javascript" src="bower_components/ngstorage/ngStorage.js"></script>
         <script src="app.js"></script>
 
         <!-- Angular Controllers Js's -->
@@ -55,7 +59,7 @@
         <!-- Angular Services Js's -->
         <script src="modules/usuario/js/UsuarioService.js"></script>
         <script src="modules/ingresso/js/IngressoService.js"></script>
-
+        <script src="comum/AppService.js"></script>
 
 
     </head>
@@ -123,16 +127,16 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown profile">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <li class="dropdown profile" ng-controller="UsuarioController">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{usuario.displayName}} <span class="caret"></span></a>
                                 <ul class="dropdown-menu animated fadeInDown">
                                     <li class="profile-img">
-                                        <img src="bower_components/template/img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                        <img  ng-src="{{usuario.picture}}" class="profile-img" err-src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/user.png" height="50px" width="50px">
                                     </li>
                                     <li>
                                         <div class="profile-info">
-                                            <h4 class="username">Emily Hart</h4>
-                                            <p>emily_hart@email.com</p>
+                                            <h4 class="username">{{usuario.displayName}}</h4>
+                                            <p>{{usuario.email}}</p>
                                             <div class="btn-group margin-bottom-2x" role="group">
                                                 <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
                                                 <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
