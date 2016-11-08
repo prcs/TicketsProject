@@ -45,10 +45,26 @@ app.controller('IngressoController', ['$scope', 'IngressoService', '$http' , 'In
             $scope.endereco = IngressoService.obterDadosEndereco(cep);
         };
 
+
         if($route.current.$$route.buscar){
+
+
+            //Buscar ingressos
             $scope.ingressosResult = Ingresso.find({"filter": {
-                "where": {"ativo": true},
+                "where": {
+                    "ativo": true,
+                    "_endereco.uf":$scope.uf,
+                    "_endereco.localidade":{like:$scope.cidade}
+                },
                 "include": ["foto", "usuario", "endereco"]
             }});
+
+            $scope.UFs = Ingresso.find({"filter": {
+                "fields" : {"_endereco.uf": true},
+                "where": {"ativo": true},
+                "include": ["endereco"]
+            }});
+
+        console.log($scope.UFs);
         }
     }]);
